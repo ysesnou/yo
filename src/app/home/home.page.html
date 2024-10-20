@@ -1,20 +1,93 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" color="light">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+  <ion-header class="ion-no-border">
+    <ion-toolbar color="light" class="ion-padding-vertical">
+      <ion-title mode="ios">
+        <img [src]="'assets/imgs/macuin.png'">
+      </ion-title>
+
+      <ion-buttons slot="start">
+        <ion-thumbnail>
+          <ion-icon name="apps-outline"></ion-icon>
+        </ion-thumbnail>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+        <ion-thumbnail>
+          <img src="assets/imgs/icono.png">
+        </ion-thumbnail>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!-- Formulario para agregar un nuevo pedido -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Agregar nuevo pedido</ion-card-title>
+    </ion-card-header>
+
+    <ion-content padding>
+      <h2>¡Bienvenido, {{ nombreUsuario }}!</h2>
+      <p>Nos alegra verte de nuevo.</p>
+    </ion-content>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Modelo</ion-label>
+        <ion-input [(ngModel)]="nuevoPedido.modelo" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Dirección</ion-label>
+        <ion-input [(ngModel)]="nuevoPedido.direccion" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Hora</ion-label>
+        <ion-input [(ngModel)]="nuevoPedido.tiempo" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Costo</ion-label>
+        <ion-input [(ngModel)]="nuevoPedido.costo" type="number" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-input [(ngModel)]="nuevoPedido.descripcion" required></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" (click)="agregarPedido()">Agregar Pedido</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de pedidos existentes -->
+  <ion-list *ngIf="pedidos.length > 0" lines="none">
+    <ion-list-header>
+      <ion-label>
+        Viajes disponibles
+      </ion-label>
+      <ion-button fill="clear" size="small" color="medium">
+        <ion-text>
+          Mostrar todos
+        </ion-text>
+      </ion-button>
+    </ion-list-header>  
+
+    <ion-item *ngFor="let pedido of pedidos">
+      <ion-label>
+        <h2>Modelo: {{ pedido.modelo }}</h2>
+        <p>Dirección: {{ pedido.direccion }}</p>
+        <p>Hora: {{ pedido.tiempo }}</p>
+        <p>Costo: ${{ pedido.costo }}</p>
+        <p>Descripción: {{ pedido.descripcion }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Si no hay pedidos -->
+  <ion-text *ngIf="pedidos.length === 0" color="medium">
+    No hay pedidos disponibles.
+  </ion-text>
+
 </ion-content>

@@ -1,27 +1,28 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
+:host {
+    --ion-color-primary: #A3C6E1; // Color celeste
+    --ion-color-dark: #003D99; // Color oscuro para el texto
+    --ion-color-light: #E6F4FA; // Color claro para el fondo
+  }
+  
+  ion-header {
+    background-color: var(--ion-color-primary);
+  }
+  
+  ion-toolbar {
+    background-color: var(--ion-color-primary);
+    color: var(--ion-color-dark);
+  }
+  
+  ion-title {
+    color: var(--ion-color-dark);
+  }
+  
+  
+  ion-label {
+    color: var(--ion-color-dark);
+  }
+  
+  ion-content {
+    background-color: var(--ion-color-light);
+  }
+  
