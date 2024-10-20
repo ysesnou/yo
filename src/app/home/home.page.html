@@ -1,27 +1,8 @@
-<ion-content [fullscreen]="true" color="light">
+<ion-content [fullscreen]="true" color="">
 
-  <ion-header class="ion-no-border">
-    <ion-toolbar color="light" class="ion-padding-vertical">
-      <ion-title mode="ios">
-        <img [src]="'assets/imgs/macuin.png'">
-      </ion-title>
-
-      <ion-buttons slot="start">
-        <ion-thumbnail>
-          <ion-icon name="apps-outline"></ion-icon>
-        </ion-thumbnail>
-      </ion-buttons>
-
-      <ion-buttons slot="end">
-        <ion-thumbnail>
-          <img src="assets/imgs/icono.png">
-        </ion-thumbnail>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
 
   <!-- Formulario para agregar un nuevo pedido -->
-  <ion-card>
+  <ion-card class="form">
     <ion-card-header>
       <ion-card-title>Agregar nuevo pedido</ion-card-title>
     </ion-card-header>
@@ -85,9 +66,8 @@
     </ion-item>
   </ion-list>
 
-  <!-- Si no hay pedidos -->
-  <ion-text *ngIf="pedidos.length === 0" color="medium">
-    No hay pedidos disponibles.
-  </ion-text>
+ 
 
 </ion-content>
+
+
