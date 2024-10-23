@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +9,18 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  correo: string = '';
+  correo: string = '';   // Variables para el formulario de inicio de sesión
   contrasena: string = '';
+  rolSeleccionado: string = ''; // Variable para guardar el rol seleccionado
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private popoverController: PopoverController // Para controlar el popover
   ) {}
 
+  // Función para manejar el inicio de sesión
   async onLogin() {
     const credentials = {
       correo: this.correo,
@@ -51,5 +54,15 @@ export class LoginPage {
         await alert.present();
       }
     );
+  }
+
+  // Función para seleccionar el rol y cerrar el popover
+  async selectRole(role: string) {
+    this.rolSeleccionado = role; // Guardar el rol seleccionado
+    const popover = await this.popoverController.getTop();
+    if (popover) {
+      popover.dismiss(); // Cerrar el popover
+    }
+    console.log(`Rol seleccionado: ${role}`);
   }
 }
